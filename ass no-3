@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int countTrailingZeroes(int n) {
+    int count = 0;
+    for (int i = 5; n / i >= 1; i *= 5)
+        count += n / i;
+    return count;
+}
+
+
+int findSmallestNumber(int n) {
+    int low = 0, high = 5 * n, ans = -1;
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (countTrailingZeroes(mid) >= n) {
+            ans = mid;
+            high = mid - 1; // try smaller number
+        } else {
+            low = mid + 1; // need more zeroes
+        }
+    }
+    return ans;
+}
+
+int main() {
+    int n;
+    cout << "Enter number of trailing zeroes: ";
+    cin >> n;
+    cout << "Smallest number whose factorial has at least " << n << " trailing zeroes is: " << findSmallestNumber(n) << endl;
+    return 0;
+}
