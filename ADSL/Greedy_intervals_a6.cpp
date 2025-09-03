@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int Start[10], End[10];
+    int start, end, n, temp;
+    cout<<"Enter the no of values: ";
+    cin>>n;
+    cout<<"Enter the starting values:\n";
+    for(int i=0;i<n;i++){
+        cin>>Start[i];
+    }
+    cout<<"Enter the ending values:\n";
+    for(int i=0;i<n;i++){
+        cin>>End[i];
+    }
+    start = Start[0];
+    end = End[0];
+    for(int i=1;i<n;i++){
+        if(Start[i] <= end){  
+            if(End[i] > end){
+                end = End[i];
+            }
+        }
+        else{   
+            cout<<"Interval is ["<<start<<","<<end<<"]\n";
+            start = Start[i];
+            end = End[i];
+        }
+    }
+    cout<<"Interval is ["<<start<<","<<end<<"]\n";
+    return 0;
+}
+
+
